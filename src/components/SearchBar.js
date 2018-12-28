@@ -2,10 +2,16 @@ import React from 'react';
 
 class SearchBar extends React.Component {
     state = { term:""  }
+    /* onFormSubmit function which prevents default refreshing of webpage
+    and whenever we are using "this" inside function make sure that the 'this' is bound.*/
+    onFormSubmit = (event)=>{
+        event.preventDefault();
+        console.log(this.state.term);
+    }
     render(){
         return (
             <div className="ui segment">
-                <form className="ui form">
+                <form onSubmit={this.onFormSubmit} className="ui form">
                     <div className="field">
                         <label>Image search</label>
                         <input type="text" value={this.state.term} onChange={e=>{this.setState({term:e.target.value})}}/>
@@ -14,7 +20,7 @@ class SearchBar extends React.Component {
             </div>
         )
     }
-    //to onchange event setstate function is hooked to make it 
+     
 }
 
 export default SearchBar;
