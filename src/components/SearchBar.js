@@ -6,7 +6,7 @@ class SearchBar extends React.Component {
     and whenever we are using "this" inside function make sure that the 'this' is bound.*/
     onFormSubmit = (event)=>{
         event.preventDefault();
-        console.log(this.state.term);
+        this.props.onSubmit(this.state.term);
     }
     render(){
         return (
